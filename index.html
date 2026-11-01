@@ -33,13 +33,18 @@
             }
         }
     </script>
-
     <style>
-        /* ჰედერის დამალვის სტილი Tailwind transition-თან ერთად */
-        header.header--hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
+        /* სუფთა CSS ჰამბურგერ/Dropdown მენიუ ტელეფონისთვის (JavaScript-ის გარეშე) */
+        #menu-toggle:checked ~ #mobile-menu {
+            display: block;
+        }
+
+        #menu-toggle:checked ~ label .icon-bars {
+            display: none;
+        }
+
+        #menu-toggle:checked ~ label .icon-close {
+            display: block;
         }
     </style>
 </head>
@@ -53,25 +58,79 @@
         <div class="absolute bottom-10 left-1/3 w-[30rem] h-[30rem] bg-indigo-200/40 rounded-full blur-3xl"></div>
     </div>
 
-    <!-- ჰედერი და ნავიგაცია (Sticky & Auto-hide) -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300 ease-in-out py-5 px-4 text-center">
-        <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <h1 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight">
-                ნიკა აშვეთია
-            </h1>
-            <p class="text-sm md:text-base text-slate-600 mt-1">
-                <span class="font-semibold text-slate-900">მე-9 კლასის მოსწავლე</span> | Full Stack Development-ის შემსწავლელი
-            </p>
+    <!-- ჰედერი და ნავიგაცია (Sticky) -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-3 sm:py-4">
+            
+            <!-- ზედა ზოლი: ლოგო/სახელი და მობილურის List Button (ჰამბურგერ ღილაკი) -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+                        ჩემი პორტფოლიო
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-600">
+                        <span class="font-semibold text-slate-900">ნიკა აშვეთია</span> | Full Stack Development
+                    </p>
+                </div>
 
-            <nav aria-label="მთავარი ნავიგაცია" class="mt-4">
-                <ul class="flex flex-wrap items-center justify-center gap-2 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
-                    <li><a href="#about" class="px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">ჩემ შესახებ</a></li>
-                    <li><a href="#skills" class="px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">უნარები</a></li>
-                    <li><a href="#projects" class="px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">პროექტები</a></li>
-                    <li><a href="#education" class="px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">განათლება</a></li>
-                    <li><a href="#contact" class="px-4 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კონტაქტი</a></li>
-                </ul>
-            </nav>
+                <!-- მობილურის List/Menu Toggle (Pure HTML/CSS - No JavaScript) -->
+                <div class="md:hidden">
+                    <input type="checkbox" id="menu-toggle" class="peer hidden">
+                    <label for="menu-toggle" class="cursor-pointer inline-flex items-center justify-center p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-blue-600 transition-colors shadow-sm border border-slate-200 select-none">
+                        <!-- Bars Icon (სია / List) -->
+                        <svg class="icon-bars w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <!-- Close Icon (დახურვა X) -->
+                        <svg class="icon-close hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </label>
+
+                    <!-- მობილური ჩამოსაშლელი სია (Dropdown List) -->
+                    <div id="mobile-menu" class="hidden absolute left-0 right-0 top-full bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-xl px-4 py-4 transition-all">
+                        <ul class="flex flex-col gap-2">
+                            <li>
+                                <a href="#about" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    👤 ჩემ შესახებ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#skills" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    ⚡ უნარები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#projects" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    🚀 პროექტები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#education" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    🎓 განათლება
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" class="block px-4 py-2.5 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    ✉️ კონტაქტი
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- დესკტოპ ნავიგაცია (ჩანს მხოლოდ კომპიუტერზე) -->
+                <nav aria-label="მთავარი ნავიგაცია" class="hidden md:block">
+                    <ul class="flex items-center gap-1.5 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
+                        <li><a href="#about" class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">ჩემ შესახებ</a></li>
+                        <li><a href="#skills" class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">უნარები</a></li>
+                        <li><a href="#projects" class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">პროექტები</a></li>
+                        <li><a href="#education" class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">განათლება</a></li>
+                        <li><a href="#contact" class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კონტაქტი</a></li>
+                    </ul>
+                </nav>
+            </div>
+
         </div>
     </header>
 
@@ -86,8 +145,8 @@
             <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
                 <div class="flex-1 order-2 md:order-1 text-slate-700 leading-relaxed text-base sm:text-lg">
                     <p>
-                        გამარჯობა! მე ვარ <strong class="text-slate-900 font-bold">ნიკა აშვეთია</strong>, მე-9 კლასის მოსწავლე.
-                        ამჟამად აქტიურად ვსწავლობ <strong class="text-blue-600 font-bold">Full Stack Development</strong>-ს და მიზნად მაქვს შევქმნა თანამედროვე ვებსაიტები და აპლიკაციები. ფოტოზე კი ჩემი საყვარელი ძაღლია, რომლის სახელია <strong class="text-amber-600 font-bold">დორი</strong> 🐶.
+                        გამარჯობა! მე ვარ <strong class="text-slate-900 font-bold">ნიკა აშვეთია</strong>, მე-9 კლასის მოსწავლე ტყაჩირიდან.
+                        ამჟამად აქტიურად ვსწავლობ <strong class="text-blue-600 font-bold">Full Stack Development</strong>-ს და მიზნად მაქვს შევქმნა თანამედროვე ვებსაიტები და აპლიკაციები.
                     </p>
                 </div>
                 <figure class="order-1 md:order-2 flex-shrink-0 bg-white p-3 rounded-2xl border border-slate-200 shadow-md text-center transform hover:rotate-1 hover:scale-105 transition-all duration-300">
@@ -216,8 +275,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript: ჰედერის ავტომატური დამალვა სქროლვის დროს -->
-    <script src="./script.js"></script>
+    <!-- სუფთა HTML & CSS (JavaScript ამოღებულია) -->
 </body>
 
 </html>
