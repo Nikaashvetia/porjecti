@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ka" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ნიკა აშვეთია - პორტფოლიო</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Play CDN with custom config) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Georgian"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body id="top"
+    class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white min-h-screen relative overflow-x-hidden">
+
+    <!-- ფონის დეკორატიული გრადიენტური ბუშტები -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-200/50 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/4 -right-24 w-96 h-96 bg-amber-200/40 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-1/3 w-[30rem] h-[30rem] bg-indigo-200/40 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- ჰედერი და ნავიგაცია (Sticky) -->
+    <header
+        class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-3 sm:py-4">
+
+            <!-- ზედა ზოლი: ლოგო/სახელი და მობილურის List Button (ჰამბურგერ ღილაკი) -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1
+                        class="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+                        ჩემი პორტფოლიო
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-600">
+                        <span class="font-semibold text-slate-900">ნიკა აშვეთია</span> | Full Stack Development
+                    </p>
+                </div>
+
+                <!-- მობილურის Burger Menu ღილაკი (JavaScript-ით მართვადი) -->
+                <div class="md:hidden relative">
+                    <button type="button" id="burger-btn" aria-label="მენიუს გახსნა"
+                        class="cursor-pointer inline-flex items-center justify-center p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-blue-600 transition-colors shadow-sm border border-slate-200 select-none">
+                        <!-- Bars Icon (სია / Burger) -->
+                        <svg id="icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <!-- Close Icon (დახურვა X) -->
+                        <svg id="icon-close" class="hidden w-6 h-6" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+
+                    <!-- მობილური ჩამოსაშლელი სია (Dropdown List) -->
+                    <div id="mobile-menu"
+                        class="hidden absolute right-0 top-full mt-2 w-56 bg-white/95 backdrop-blur-lg border border-slate-200 shadow-xl rounded-2xl p-3 transition-all z-50">
+                        <ul class="flex flex-col gap-1.5">
+                            <li>
+                                <a href="#about"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    👤 ჩემ შესახებ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#skills"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    ⚡ უნარები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#projects"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    🚀 პროექტები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#education"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    🎓 განათლება
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#users"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    👥 მომხმარებლები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#comments"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    💬 კომენტარები
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact"
+                                    class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                    ✉️ კონტაქტი
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- დესკტოპ ნავიგაცია (ჩანს მხოლოდ კომპიუტერზე) -->
+                <nav aria-label="მთავარი ნავიგაცია" class="hidden md:block">
+                    <ul
+                        class="flex items-center gap-1.5 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
+                        <li><a href="#about"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">ჩემ
+                                შესახებ</a></li>
+                        <li><a href="#skills"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">უნარები</a>
+                        </li>
+                        <li><a href="#projects"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">პროექტები</a>
+                        </li>
+                        <li><a href="#education"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">განათლება</a>
+                        </li>
+                        <li><a href="#users"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">მომხმარებლები</a>
+                        </li>
+                        <li><a href="#comments"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კომენტარები</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კონტაქტი</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ძირითადი შინაარსი -->
+    <main class="max-w-4xl mx-auto px-4 py-10 space-y-10">
+
+        <!-- ჩემ შესახებ სექცია -->
+        <section id="about"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <h2
+                class="text-2xl font-bold text-slate-900 pb-3 mb-6 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                ჩემ შესახებ
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <div class="flex-1 order-2 md:order-1 text-slate-700 leading-relaxed text-base sm:text-lg">
+                    <p>
+                        გამარჯობა! მე ვარ <strong class="text-slate-900 font-bold">ნიკა აშვეთია</strong>, მე-9 კლასის
+                        მოსწავლე ტყაჩირიდან.
+                        ამჟამად აქტიურად ვსწავლობ <strong class="text-blue-600 font-bold">Full Stack
+                            Development</strong>-ს და მიზნად მაქვს შევქმნა თანამედროვე ვებსაიტები და აპლიკაციები.
+                    </p>
+                </div>
+                <figure
+                    class="order-1 md:order-2 flex-shrink-0 bg-white p-3 rounded-2xl border border-slate-200 shadow-md text-center transform hover:rotate-1 hover:scale-105 transition-all duration-300">
+                    <img src="photo/messi.jpg" alt="ლეო მესი"
+                        class="w-52 h-52 object-cover rounded-xl shadow-inner mx-auto">
+                    <figcaption
+                        class="mt-2.5 inline-block bg-blue-50 text-blue-600 font-bold text-xs px-3 py-1 rounded-full">
+                        ლეო მესი
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- უნარების სექცია -->
+        <section id="skills"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <h2
+                class="text-2xl font-bold text-slate-900 pb-3 mb-6 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                ჩემი უნარები
+            </h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <li
+                    class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm border-l-4 border-l-amber-500 hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                    <div class="text-2xl mb-1">📐</div>
+                    <strong class="block text-slate-900 font-bold mb-1 text-base">მათემატიკა</strong>
+                    <span class="text-sm text-slate-600">კარგად მესმის მათემატიკა და ლოგიკური ამოცანების ამოხსნა.</span>
+                </li>
+                <li
+                    class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm border-l-4 border-l-emerald-500 hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                    <div class="mb-2">
+                        <!-- დიდი ბრიტანეთის / ინგლისის ოფიციალური დროშა SVG -->
+                        <svg class="w-8 h-6 rounded shadow-sm border border-slate-200 inline-block" viewBox="0 0 60 30"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <clipPath id="s">
+                                <path d="M0,0 v30 h60 v-30 z" />
+                            </clipPath>
+                            <clipPath id="t">
+                                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+                            </clipPath>
+                            <g clip-path="url(#s)">
+                                <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E"
+                                    stroke-width="4" />
+                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+                            </g>
+                        </svg>
+                    </div>
+                    <strong class="block text-slate-900 font-bold mb-1 text-base">ინგლისური ენა</strong>
+                    <span class="text-sm text-slate-600">კარგად ვიცი ინგლისური ენა, შემიძლია თავისუფლად კომუნიკაცია და
+                        მასალების გაგება.</span>
+                </li>
+                <li
+                    class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm border-l-4 border-l-blue-600 hover:-translate-y-1 hover:shadow-md transition-all duration-200 sm:col-span-2 md:col-span-1">
+                    <div class="text-2xl mb-1">💻</div>
+                    <strong class="block text-slate-900 font-bold mb-1 text-base">ვებ დეველოპმენტი</strong>
+                    <span class="text-sm text-slate-600">ვსწავლობ Full Stack ტექნოლოგიებს (HTML, სემანტიკა, ვებ
+                        საფუძვლები).</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- პროექტების სექცია -->
+        <section id="projects"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <h2
+                class="text-2xl font-bold text-slate-900 pb-3 mb-6 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                პროექტები
+            </h2>
+            <article
+                class="bg-gradient-to-br from-white to-blue-50/40 p-6 rounded-2xl border border-blue-100 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-2">
+                    <span class="text-xl">🚀</span> სამომავლო პროექტები
+                </h3>
+                <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    ამ ეტაპზე ვმუშაობ ჩემს პირველ პროექტებზე და მალე წარმოვადგენ ჩემს შექმნილ ვებსაიტებს!
+                </p>
+            </article>
+        </section>
+
+        <!-- განათლების სექცია -->
+        <section id="education"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <h2
+                class="text-2xl font-bold text-slate-900 pb-3 mb-6 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                განათლება
+            </h2>
+            <article
+                class="bg-gradient-to-br from-white to-emerald-50/40 p-6 rounded-2xl border border-emerald-100 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-200">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-2">
+                    <span class="text-xl">🎓</span> ტყაჩირის საჯარო სკოლა
+                </h3>
+                <p class="text-slate-600 leading-relaxed text-sm sm:text-base flex items-center gap-2">
+                    <span>საბაზო საფეხური:</span>
+                    <span class="bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full text-xs">მე-9
+                        კლასი</span>
+                </p>
+            </article>
+        </section>
+
+        <!-- მომხმარებლების სექცია (API: JSONPlaceholder Users) -->
+        <section id="users"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-3 mb-6 border-b border-slate-100 gap-2">
+                <div>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 relative after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                        მომხმარებლები (API)
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-2">მონაცემები ჩატვირთულია
+                        https://jsonplaceholder.typicode.com/users-იდან</p>
+                </div>
+                <span
+                    class="inline-flex items-center gap-1.5 self-start sm:self-auto bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    სულ: 10 მომხმარებელი
+                </span>
+            </div>
+
+            <!-- ბარათების კონტეინერი -->
+            <div id="users-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="col-span-full text-center py-8 text-slate-400 text-sm">
+                    იტვირთება მონაცემები...
+                </div>
+            </div>
+        </section>
+
+        <!-- კომენტარების სექცია (API: JSONPlaceholder 5 Comments) -->
+        <section id="comments"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-3 mb-6 border-b border-slate-100 gap-2">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 relative after:content-[''] after:absolute after:-bottom-3 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                        კომენტარები (API)
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-2">მონაცემები ჩატვირთულია https://jsonplaceholder.typicode.com/comments-იდან</p>
+                </div>
+                <span class="inline-flex items-center gap-1.5 self-start sm:self-auto bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full border border-amber-200">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    ნაჩვენებია: 5 კომენტარი
+                </span>
+            </div>
+
+            <!-- კომენტარების კონტეინერი -->
+            <div id="comments-list" class="space-y-4">
+                <div class="text-center py-8 text-slate-400 text-sm">
+                    იტვირთება კომენტარები...
+                </div>
+            </div>
+        </section>
+
+        <!-- საკონტაქტო ფორმა -->
+        <section id="contact"
+            class="scroll-mt-24 bg-white/90 backdrop-blur-sm border border-white/80 rounded-3xl p-6 sm:p-10 shadow-lg shadow-blue-500/5 hover:shadow-xl transition-all duration-300">
+            <h2
+                class="text-2xl font-bold text-slate-900 pb-3 mb-6 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-blue-600 after:to-sky-400 after:rounded-full">
+                დამიკავშირდით
+            </h2>
+            <p class="text-slate-600 mb-6 text-sm sm:text-base">შეგიძლიათ მომწეროთ შეტყობინება ქვემოთ მოცემული ფორმის
+                საშუალებით:</p>
+
+            <form action="#" method="post"
+                class="space-y-5 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <label for="user-name"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">თქვენი
+                        სახელი</label>
+                    <input type="text" id="user-name" name="name" required placeholder="მაგ: გიორგი"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-600 focus:bg-white transition-all text-sm sm:text-base">
+                </div>
+
+                <div>
+                    <label for="user-email"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">თქვენი
+                        ელ-ფოსტა</label>
+                    <input type="email" id="user-email" name="email" required placeholder="მაგ: example@mail.com"
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-600 focus:bg-white transition-all text-sm sm:text-base">
+                </div>
+
+                <div>
+                    <label for="user-message"
+                        class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">შეტყობინება</label>
+                    <textarea id="user-message" name="message" rows="5" required placeholder="ჩაწერეთ შეტყობინება..."
+                        class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-600 focus:bg-white transition-all text-sm sm:text-base resize-y"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer">
+                        შეტყობინების გაგზავნა
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ფუტერი -->
+    <footer class="bg-white/90 backdrop-blur-md border-t border-slate-200 text-center py-10 px-4 mt-16 shadow-inner">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <address class="not-italic">
+                <p class="font-bold text-slate-900 mb-3 text-base">საკონტაქტო ინფორმაცია:</p>
+                <ul class="flex flex-wrap justify-center gap-3 text-sm">
+                    <li class="bg-blue-50 border border-blue-200/80 px-4 py-2 rounded-full text-slate-700">
+                        📧 Gmail: <a href="mailto:nika.ashvetiate08@geolab.edu.ge"
+                            class="text-blue-600 font-semibold hover:underline">nika.ashvetiate08@geolab.edu.ge</a>
+                    </li>
+                    <li class="bg-blue-50 border border-blue-200/80 px-4 py-2 rounded-full text-slate-700">
+                        📞 ტელეფონი: <a href="tel:67676767"
+                            class="text-blue-600 font-semibold hover:underline">67676767</a>
+                    </li>
+                </ul>
+            </address>
+
+            <p class="text-xs sm:text-sm text-slate-500">&copy; 2026 ნიკა აშვეთია. ყველა უფლება დაცულია.</p>
+
+            <div>
+                <a href="#top"
+                    class="inline-block mt-2 text-xs font-bold text-blue-600 bg-slate-100 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full transition-all duration-200 shadow-sm">
+                    ზემოთ ასვლა &uarr;
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript: Burger Menu მართვა -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
