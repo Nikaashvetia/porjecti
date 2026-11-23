@@ -11,23 +11,23 @@ export default function Navbar({ navLinks = [] }) {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300">
-      <div className="max-w-5xl mx-auto px-4 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300 w-full">
+      <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5">
+        <div className="flex items-center justify-between gap-4">
           {/* ლოგო / სახელი */}
-          <div>
+          <div className="flex-shrink-0 text-left">
             <a href="#top" className="group block">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight group-hover:opacity-90 transition-opacity">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight group-hover:opacity-90 transition-opacity whitespace-nowrap">
                 ჩემი პორტფოლიო
               </h1>
             </a>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-slate-600 whitespace-nowrap mt-0.5">
               <span className="font-semibold text-slate-900">ნიკა აშვეთია</span> | Full Stack Development
             </p>
           </div>
 
           {/* მობილურის Burger Menu ღილაკი */}
-          <div className="md:hidden relative">
+          <div className="lg:hidden relative">
             <button
               type="button"
               onClick={toggleMenu}
@@ -69,13 +69,13 @@ export default function Navbar({ navLinks = [] }) {
           </div>
 
           {/* დესკტოპ ნავიგაცია */}
-          <nav aria-label="მთავარი ნავიგაცია" className="hidden md:block">
-            <ul className="flex items-center gap-1.5 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
+          <nav aria-label="მთავარი ნავიგაცია" className="hidden lg:flex items-center flex-shrink-0">
+            <ul className="flex items-center flex-nowrap whitespace-nowrap gap-1 xl:gap-2 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="px-3.5 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow"
+                    className="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap"
                   >
                     {link.label}
                   </a>

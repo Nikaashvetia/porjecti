@@ -16,7 +16,7 @@ const navLinks = [
   { href: '#projects', label: 'პროექტები', icon: '🚀' },
   { href: '#education', label: 'განათლება', icon: '🎓' },
   { href: '#users', label: 'მომხმარებლები', icon: '👥' },
-  { href: '#comments', label: 'კომენტარები', icon: '💬' },
+  { href: 'comments.html', label: 'კომენტარები', icon: '💬' },
   { href: '#contact', label: 'კონტაქტი', icon: '✉️' },
 ];
 

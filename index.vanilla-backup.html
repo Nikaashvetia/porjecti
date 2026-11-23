@@ -50,23 +50,23 @@
 
     <!-- ჰედერი და ნავიგაცია (Sticky) -->
     <header
-        class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300">
-        <div class="max-w-5xl mx-auto px-4 py-3 sm:py-4">
+        class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all duration-300 w-full">
+        <div class="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5">
 
             <!-- ზედა ზოლი: ლოგო/სახელი და მობილურის List Button (ჰამბურგერ ღილაკი) -->
-            <div class="flex items-center justify-between">
-                <div>
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex-shrink-0 text-left">
                     <h1
-                        class="text-xl sm:text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+                        class="text-xl sm:text-2xl lg:text-3xl font-extrabold bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 bg-clip-text text-transparent tracking-tight whitespace-nowrap">
                         ჩემი პორტფოლიო
                     </h1>
-                    <p class="text-xs sm:text-sm text-slate-600">
+                    <p class="text-xs sm:text-sm text-slate-600 whitespace-nowrap mt-0.5">
                         <span class="font-semibold text-slate-900">ნიკა აშვეთია</span> | Full Stack Development
                     </p>
                 </div>
 
                 <!-- მობილურის Burger Menu ღილაკი (JavaScript-ით მართვადი) -->
-                <div class="md:hidden relative">
+                <div class="lg:hidden relative">
                     <button type="button" id="burger-btn" aria-label="მენიუს გახსნა"
                         class="cursor-pointer inline-flex items-center justify-center p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-blue-600 transition-colors shadow-sm border border-slate-200 select-none">
                         <!-- Bars Icon (სია / Burger) -->
@@ -117,7 +117,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#comments"
+                                <a href="comments.html"
                                     class="block px-4 py-2 rounded-xl font-semibold text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                                     💬 კომენტარები
                                 </a>
@@ -133,29 +133,28 @@
                 </div>
 
                 <!-- დესკტოპ ნავიგაცია (ჩანს მხოლოდ კომპიუტერზე) -->
-                <nav aria-label="მთავარი ნავიგაცია" class="hidden md:block">
+                <nav aria-label="მთავარი ნავიგაცია" class="hidden lg:flex items-center flex-shrink-0">
                     <ul
-                        class="flex items-center gap-1.5 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
+                        class="flex items-center flex-nowrap whitespace-nowrap gap-1 xl:gap-2 bg-slate-100/90 border border-slate-200 p-1.5 rounded-full shadow-inner">
                         <li><a href="#about"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">ჩემ
-                                შესახებ</a></li>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">ჩემ შესახებ</a></li>
                         <li><a href="#skills"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">უნარები</a>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">უნარები</a>
                         </li>
                         <li><a href="#projects"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">პროექტები</a>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">პროექტები</a>
                         </li>
                         <li><a href="#education"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">განათლება</a>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">განათლება</a>
                         </li>
                         <li><a href="#users"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">მომხმარებლები</a>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">მომხმარებლები</a>
                         </li>
-                        <li><a href="#comments"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კომენტარები</a>
+                        <li><a href="comments.html"
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">კომენტარები</a>
                         </li>
                         <li><a href="#contact"
-                                class="px-4 py-1.5 text-xs lg:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow">კონტაქტი</a>
+                                class="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-white rounded-full transition-all duration-200 block shadow-sm hover:shadow whitespace-nowrap">კონტაქტი</a>
                         </li>
                     </ul>
                 </nav>
